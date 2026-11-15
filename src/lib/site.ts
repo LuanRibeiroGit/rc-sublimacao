@@ -16,7 +16,6 @@ export const SITE = {
 export const OPENING_HOURS = [
   { label: "Segunda a sexta", hours: "09h às 17h" },
   { label: "Sábado", hours: "09h às 12h" },
-  { label: "Domingos e feriados", hours: "Fechado" },
 ];
 
 // Endereço público do site: defina NEXT_PUBLIC_SITE_URL ao usar domínio próprio.
