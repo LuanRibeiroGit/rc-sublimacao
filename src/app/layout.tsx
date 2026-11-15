@@ -70,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="pt-BR"
       data-scroll-behavior="smooth"
-      className={`${body.variable} ${heading.variable} scroll-smooth antialiased`}
+      className={`${body.variable} ${heading.variable} scroll-smooth bg-slate-950 antialiased`}
     >
       <body className="flex min-h-dvh flex-col overflow-x-hidden bg-slate-50 font-sans text-slate-700">
         <StructuredData />
