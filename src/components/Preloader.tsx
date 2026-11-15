@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // Limite de espera para o site nunca ficar preso em conexões lentas.
-const MAX_WAIT_MS = 15000;
+const MAX_WAIT_MS = 6000;
 
 function waitForImage(img: HTMLImageElement) {
   if (img.complete) return Promise.resolve();
@@ -15,15 +15,6 @@ function waitForImage(img: HTMLImageElement) {
   });
 }
 
-function waitForVideo(video: HTMLVideoElement) {
-  if (video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
-    return Promise.resolve();
-  }
-  return new Promise<void>((resolve) => {
-    video.addEventListener("canplaythrough", () => resolve(), { once: true });
-    video.addEventListener("error", () => resolve(), { once: true });
-  });
-}
 
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
@@ -31,10 +22,10 @@ export default function Preloader() {
 
   useEffect(() => {
     let active = true;
-    const assets = [
-      ...Array.from(document.images).map(waitForImage),
-      ...Array.from(document.querySelectorAll("video")).map(waitForVideo),
-    ];
+    // Espera só as imagens da primeira tela; o restante carrega sob demanda.
+    const assets = Array.from(
+      document.querySelectorAll<HTMLImageElement>('img[loading="eager"]'),
+    ).map(waitForImage);
     let done = 0;
 
     assets.forEach((asset) =>

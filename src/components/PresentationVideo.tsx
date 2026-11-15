@@ -5,7 +5,13 @@ import { useEffect, useRef } from "react";
 
 export default function PresentationVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isNear = useInView(videoRef, { margin: "800px 0px", once: true });
   const inView = useInView(videoRef, { amount: 0.4 });
+
+  // O vídeo só começa a baixar quando o visitante se aproxima da seção.
+  useEffect(() => {
+    if (isNear && videoRef.current) videoRef.current.preload = "auto";
+  }, [isNear]);
 
   // Reproduz apenas enquanto o vídeo está visível na tela.
   useEffect(() => {
@@ -23,11 +29,12 @@ export default function PresentationVideo() {
       <video
         ref={videoRef}
         src="/video/apresentacao-v2.mp4"
+        poster="/video/apresentacao-capa.jpg"
         muted
         loop
         playsInline
         disablePictureInPicture
-        preload="auto"
+        preload="none"
         aria-label="Vídeo de apresentação da RC Sublimação"
         className="aspect-video w-full bg-slate-950 object-cover"
       />
