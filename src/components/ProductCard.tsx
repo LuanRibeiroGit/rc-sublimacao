@@ -25,6 +25,7 @@ export default function ProductCard({ product }: { product: Product }) {
           src={`/produtos/${product.kind}.png`}
           alt={`${product.title} personalizados com sublimação`}
           fill
+          loading="eager"
           sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
           className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
         />

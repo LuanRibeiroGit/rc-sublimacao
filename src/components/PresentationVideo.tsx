@@ -27,7 +27,7 @@ export default function PresentationVideo() {
         loop
         playsInline
         disablePictureInPicture
-        preload="metadata"
+        preload="auto"
         aria-label="Vídeo de apresentação da RC Sublimação"
         className="aspect-video w-full bg-slate-950 object-cover"
       />

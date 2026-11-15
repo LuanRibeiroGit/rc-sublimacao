@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MotionProvider from "@/components/MotionProvider";
+import Preloader from "@/components/Preloader";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-dvh flex-col overflow-x-hidden bg-slate-50 font-sans text-slate-700">
         <MotionProvider>
+          <Preloader />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
