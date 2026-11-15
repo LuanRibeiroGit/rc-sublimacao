@@ -13,6 +13,19 @@ export const SITE = {
     "https://www.google.com/maps/search/?api=1&query=Av.+Sete+de+Setembro,+3710+-+Centro,+Curitiba+-+PR,+80250-210",
 };
 
+export const OPENING_HOURS = [
+  { label: "Segunda a sexta", hours: "09h às 17h" },
+  { label: "Sábado", hours: "09h às 12h" },
+  { label: "Domingos e feriados", hours: "Fechado" },
+];
+
+// Endereço público do site: defina NEXT_PUBLIC_SITE_URL ao usar domínio próprio.
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const NAV_LINKS = [
   { label: "Início", href: "/#inicio" },
   { label: "Produtos", href: "/#produtos" },

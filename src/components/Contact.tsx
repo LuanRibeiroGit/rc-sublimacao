@@ -1,6 +1,6 @@
-import { MapPin, Phone } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import type { ReactNode } from "react";
-import { SITE, whatsappLink } from "@/lib/site";
+import { OPENING_HOURS, SITE, whatsappLink } from "@/lib/site";
 import ContactForm from "./ContactForm";
 import InstagramIcon from "./InstagramIcon";
 import Reveal from "./Reveal";
@@ -74,6 +74,28 @@ export default function Contact() {
               <br />
               {SITE.addressLine2}
             </ContactCard>
+
+            <div className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1 hover:border-fuchsia-200 hover:shadow-xl hover:shadow-fuchsia-500/15">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-fuchsia-500 to-orange-400 text-white">
+                <Clock className="h-5 w-5" />
+              </span>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  Horário de funcionamento
+                </h3>
+                <dl className="mt-1 flex flex-col gap-1 text-sm text-slate-900 sm:text-base">
+                  {OPENING_HOURS.map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex flex-wrap justify-between gap-x-4"
+                    >
+                      <dt className="font-medium">{item.label}</dt>
+                      <dd className="text-slate-600">{item.hours}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
 
             <div className="min-h-64 flex-1 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
               <iframe

@@ -1,6 +1,7 @@
 import FaqItem from "./FaqItem";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+import { JsonLd } from "./StructuredData";
 
 const QUESTIONS = [
   {
@@ -38,6 +39,17 @@ const QUESTIONS = [
 export default function Faq() {
   return (
     <section id="duvidas" className="scroll-mt-16 py-20 sm:py-24 lg:scroll-mt-20">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: QUESTIONS.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }}
+      />
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Dúvidas frequentes"

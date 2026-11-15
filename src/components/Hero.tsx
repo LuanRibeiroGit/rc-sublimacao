@@ -34,7 +34,7 @@ export default function Hero() {
           <Reveal>
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-200 sm:text-sm">
               <MapPin className="h-4 w-4 text-fuchsia-400" />
-              No Centro de Curitiba - PR
+              Sublimação no Centro de Curitiba - PR
             </p>
           </Reveal>
 

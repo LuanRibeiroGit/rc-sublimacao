@@ -1,6 +1,6 @@
-import { MapPin, Phone } from "lucide-react";
+import { Clock, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
+import { NAV_LINKS, OPENING_HOURS, SITE, whatsappLink } from "@/lib/site";
 import InstagramIcon from "./InstagramIcon";
 import Logo from "./Logo";
 
@@ -75,6 +75,16 @@ export default function Footer() {
                   {SITE.addressLine2}
                 </span>
               </a>
+            </li>
+            <li className="flex items-start gap-3">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-400" />
+              <span>
+                {OPENING_HOURS.map((item) => (
+                  <span key={item.label} className="block">
+                    {item.label}: {item.hours}
+                  </span>
+                ))}
+              </span>
             </li>
           </ul>
         </div>
